@@ -54,7 +54,7 @@ jobs:
           path: public/
     
     # Job deploy que depende del build para ejecutarse 
-    deploy:
+  deploy:
       runs-on: ubuntu-latest
       needs: build
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
