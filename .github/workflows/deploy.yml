@@ -71,7 +71,7 @@ jobs:
 
       # Usamos la accion para publicar la pagina en GitHub Pages
       steps:
-        - name: Deploy to GitHub pages
+        - name: Deploy to GitHub pages saved
           id: deployment
           uses: actions/deploy-pages@v4
 
