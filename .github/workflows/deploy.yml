@@ -49,7 +49,7 @@ jobs:
 
         # Accion que permite subir la carpeta public como artifact 
       - name: Upload artifact 
-        uses: actions/upload-page-artifact@v3
+        uses: actions/upload-pages-artifact@v3
         with:
           path: public/
     
