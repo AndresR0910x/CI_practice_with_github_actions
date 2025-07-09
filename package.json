@@ -1,0 +1,15 @@
+{
+  "name": "static-page-ci",
+  "version": "1.0.0",
+  "description": "Página estática con CI usando GitHub Actions",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "node src/index.js",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
