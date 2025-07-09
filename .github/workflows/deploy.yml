@@ -36,7 +36,7 @@ jobs:
         # Comando que permite instalar dependencias necesarias
         # para compilar el proyecto 
       - name: Install dependencies
-        run: npm Install
+        run: npm install
       
         # Comando para probar el proyecto
         # Ejecucion de pruebas unitarias 
