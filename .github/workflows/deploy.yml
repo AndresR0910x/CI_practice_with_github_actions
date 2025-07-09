@@ -47,6 +47,33 @@ jobs:
       - name: Build page 
         run: npm run build
 
+        # Accion que permite subir la carpeta public como artifact 
+      - name: Upload artifact 
+        uses: actions/upload-page-artifact@v3
+        with:
+          path: public/
+    
+    # Job deploy que depende del build para ejecutarse 
+    deploy:
+      runs-on: ubuntu-latest
+      needs: build
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+      # Configuracion de permisos para el despliegue de la aplcacion
+      permissions:
+        pages: write 
+        id-token: write
+      
+      # Definicion de un entorno para rastrear la url de despliegue 
+      environment: 
+        name: github-pages
+        url: ${{ steps.deployment.outuputs.page_url }}
+
+      # Usamos la accion para publicar la pagina en GitHub Pages
+      steps:
+        - name: Deploy to GitHub pages
+          id: deployment
+          uses: actions/deploy-pages@v4
 
       
 
