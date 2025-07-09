@@ -1,0 +1,54 @@
+
+# Nombre del workflow o pipeline 
+
+name: CI Practica 
+
+# Trigger que permite que el worflow se ejecute 
+# En este caso el trigger se ejecuta cada vez que 
+# se realice push en la rama main
+
+on:
+  push: 
+    branches: 
+      - main
+
+# Son las tareas que el workflow va a realizar 
+# Siempre se deben declarar jobs para que el workflow 
+# pueda trabajar 
+
+jobs: 
+  build:
+    #Entorno en el cual va a trabajar el workflow 
+    runs-on: ubuntu-latest
+
+    # Pasos para ejecutar el workflow 
+    steps:
+        # Accion que permite clonar el repo 
+      - name: Checkout 
+        uses: actions/checkout@v4
+
+        # Accion que permite instalar node en ubuntu
+      - name: Setup Node.js 
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+        # Comando que permite instalar dependencias necesarias
+        # para compilar el proyecto 
+      - name: Install dependencies
+        run: npm Install
+      
+        # Comando para probar el proyecto
+        # Ejecucion de pruebas unitarias 
+      - name: Run tests
+        run: npm run test
+
+        # Comando para construir la pagina estatica
+      - name: Build page 
+        run: npm run build
+
+
+      
+
+
+
